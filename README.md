@@ -14,4 +14,4 @@ Menikah = 2
 Tambah data (Perempuan, 27, 12000000, Single)
 ![add female test 11](female_test_11.png)
 Tambah data (Laki-laki, 35, 14000000, Menikah)
-![add female test 11](female_test_11.png)
+![add female test 11](male_test_12.png)
