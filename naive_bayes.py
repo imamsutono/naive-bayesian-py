@@ -1,4 +1,5 @@
 # import pandas as pd
+from math import sqrt
 
 def separate_by_class(dataset):
   separated = dict()
@@ -12,8 +13,21 @@ def separate_by_class(dataset):
   
   return separated
 
+# Calculate the mean of a list of numbers
 def mean(numbers):
-  return sum(numbers) / float(len(numbers));
+  return sum(numbers) / float(len(numbers))
+
+# Calculate the standard deviation of a list of numbers
+def stdev(numbers):
+  avg = mean(numbers)
+  variance = sum([(x-avg)**2 for x in numbers]) / float(len(numbers) - 1)
+  return sqrt(variance)
+
+# Calculate the mean, stdev and count for each column in a dataset
+def summarize_dataset(dataset):
+  summaries = [(mean(column), stdev(column), len(column)) for column in zip(*dataset)]
+  del(summaries[-1])
+  return summaries
 
 # Test separating data by class
 dataset = [
@@ -29,14 +43,19 @@ dataset = [
   ["Perempuan", 20, 10000000, "Single", "Kendaraan pribadi"]
 ]
 
-separated = separate_by_class(dataset)
+# separated = separate_by_class(dataset)
 
-for label in separated:
-  print(label)
-  for row in separated[label]:
-    print(row)
+# for label in separated:
+#   print(label)
+#   for row in separated[label]:
+#     print(row)
+
+summary = summarize_dataset(dataset)
+print(summary)
+
+# print(separate_by_class(separated))
 
 # df = pd.read_csv('employee_vehicle.csv')
-sp_class = separate_by_class(df)
+# sp_class = separate_by_class(df)
 
-print(sp_class)
+# print(sp_class)
